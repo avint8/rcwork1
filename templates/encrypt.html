@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>encryption</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+   <div class="container">
+      <div class=jumbotron>
+         <div class="row">
+                  <p>Supported format: {.tiff}</p>
+   
+                  <form action = "{{url_for('enc')}}" method = "POST" enctype = "multipart/form-data" id='form'>
+                     <div class="col-sm-6"><input type = "file" name = "image" class="form-control" required /></div>
+                     <div class="col-sm-6"> <button type = "submit" class="btn btn-info btn-lg">Start Convertion</button> </div>
+                  </form>  
+         </div>
+      </div>    
+      {% if f!=0 %}
+      <div class="jumbotron">
+         <div class="row" style="margin-bottom: 2rem;">
+            
+            <div class="col-sm-6"><p>Original Image</p>
+               <img src="{{ url_for('static', filename='do.png') }}"  height="30%">
+            </div>
+   
+            <div class="col-sm-6"><p>Encrypted Image</p>
+               <img src="{{ url_for('static', filename='de.png') }}" height="30%">
+            </div>  
+         </div>
+         <div class="row" style="margin-bottom: 2rem;">
+            <h2 >key : {{key}}</h2>
+         </div>
+   
+         <div class="row">
+            <a href="{{ url_for('static', filename='enimg.tiff') }}" class="btn btn-success btn-lg">Dowload Decrypted Image</a>
+         </div>
+      </div>
+      {% endif %}
+      <div class="jumbotron">
+         <div class="row"><a href="{{url_for('home')}}" class="btn btn-danger">Back to Home</a></div>
+      </div>
+         
+
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>

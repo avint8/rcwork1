@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>decryption</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <p class='fi'>Supported format: {.tiff}</p>
+                <form action = "{{url_for('dec')}}" method = "POST" enctype = "multipart/form-data" id='form'>
+        
+                    <div class="col-sm-4"><input type = "file" name = "image" class="form-control" placeholder="image" required/></div>  
+                    <div class="col-sm-5"><input type ="password" name = "key" class="form-control" placeholder="key" required/></div> 
+                    <div class="col-sm-3"><button type = "submit" class="btn btn-info btn-lg">Start Convertion</button></div> 
+                     
+                </form>
+            </div>
+        </div>
+        
+        
+            {% if f != 0  %}
+            <div class="jumbotron">
+            <div class="row" style="margin-bottom: 2rem;">
+                <div class="col-sm-6">
+                    <p>Encrypted Image</p>
+                    <img src="{{ url_for('static', filename='de.png') }}" height="30%">
+                </div>
+            
+                <div class="col-sm-6">      
+                    <p>Decrypted Image</p>
+                    <img src="{{ url_for('static', filename='dd.png') }}" height="30%">
+                </div>
+            </div>
+            
+        
+            <div class="row" style="margin-bottom: 2rem;">
+                <a href="{{ url_for('static', filename='deimg.tiff') }}" class="btn btn-success btn-lg">Download Decrypted Image</a>
+            </div>
+            </div>
+            {% endif %}
+        
+    
+        <div class="jumbotron">
+            <a href="{{url_for('home')}}" class="btn btn-danger">Back to Home</a>
+        </div>
+    
+        
+    </div>
+    
+
+</body>
